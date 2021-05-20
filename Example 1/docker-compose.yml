@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  ubuntuos:
+    build: ./ubuntu
+    stdin_open: true #Keeps STDIN open even if not attached
+    tty: true #Allocates a pseudo-tty i.e. allows communication

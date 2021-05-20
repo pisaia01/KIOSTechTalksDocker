@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8123:8000
+    env_file:
+      - ./.env.dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+        reservations:
+          memory: 20M
